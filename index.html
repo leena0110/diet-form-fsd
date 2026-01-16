@@ -3,242 +3,308 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Healthy Diet Form</title>
+    <title>Diet Form - Nutrition Planning</title>
     <link rel="stylesheet" href="diet_style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
 <body>
     <div class="container">
         <header>
-            <h1><i class="fas fa-apple-alt"></i> Healthy Diet Planner</h1>
-            <p>Fill out this form to get your personalized diet plan</p>
+            <div class="logo">
+                <i class="fas fa-apple-alt"></i>
+                <h1>NutriPlan Diet Form</h1>
+            </div>
+            <p class="subtitle">Fill out this form to get your personalized diet plan</p>
         </header>
-        
-        <form id="dietForm" class="diet-form" action="#" method="POST">
-            <div class="form-section">
-                <h2><i class="fas fa-user"></i> Personal Information</h2>
-                <div class="form-group">
-                    <label for="fullName">Full Name *</label>
-                    <input type="text" id="fullName" name="fullName" required placeholder="Enter your full name">
-                </div>
-                
-                <div class="form-row">
+
+        <main>
+            <form id="dietForm">
+                <!-- Personal Information Section -->
+                <section class="form-section">
+                    <h2><i class="fas fa-user"></i> Personal Information</h2>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="name">Full Name <span class="required">*</span></label>
+                            <input type="text" id="name" name="name" required placeholder="Enter your full name">
+                        </div>
+                        <div class="form-group">
+                            <label for="age">Age <span class="required">*</span></label>
+                            <input type="number" id="age" name="age" required min="1" max="120" placeholder="Your age">
+                        </div>
+                    </div>
+                    
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="gender">Gender <span class="required">*</span></label>
+                            <select id="gender" name="gender" required>
+                                <option value="" disabled selected>Select your gender</option>
+                                <option value="male">Male</option>
+                                <option value="female">Female</option>
+                                <option value="other">Other</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="email">Email Address <span class="required">*</span></label>
+                            <input type="email" id="email" name="email" required placeholder="example@email.com">
+                        </div>
+                    </div>
+                    
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="height">Height (cm) <span class="required">*</span></label>
+                            <input type="number" id="height" name="height" required min="50" max="250" placeholder="e.g., 165">
+                        </div>
+                        <div class="form-group">
+                            <label for="weight">Weight (kg) <span class="required">*</span></label>
+                            <input type="number" id="weight" name="weight" required min="10" max="300" placeholder="e.g., 65">
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Health & Diet Information Section -->
+                <section class="form-section">
+                    <h2><i class="fas fa-heartbeat"></i> Health & Diet Information</h2>
+                    
                     <div class="form-group">
-                        <label for="age">Age *</label>
-                        <input type="number" id="age" name="age" required min="1" max="120" placeholder="Age">
+                        <label>Dietary Preference <span class="required">*</span></label>
+                        <div class="radio-group">
+                            <label class="radio-option">
+                                <input type="radio" name="diet" value="vegetarian" required>
+                                <span class="radio-custom"></span>
+                                Vegetarian
+                            </label>
+                            <label class="radio-option">
+                                <input type="radio" name="diet" value="non-vegetarian">
+                                <span class="radio-custom"></span>
+                                Non-Vegetarian
+                            </label>
+                            <label class="radio-option">
+                                <input type="radio" name="diet" value="vegan">
+                                <span class="radio-custom"></span>
+                                Vegan
+                            </label>
+                        </div>
+                    </div>
+                    
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="activity">Activity Level <span class="required">*</span></label>
+                            <select id="activity" name="activity" required>
+                                <option value="" disabled selected>Select your activity level</option>
+                                <option value="sedentary">Sedentary (little or no exercise)</option>
+                                <option value="light">Lightly active (light exercise 1-3 days/week)</option>
+                                <option value="moderate">Moderately active (moderate exercise 3-5 days/week)</option>
+                                <option value="active">Active (hard exercise 6-7 days/week)</option>
+                                <option value="very-active">Very active (very hard exercise & physical job)</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="goal">Diet Goal <span class="required">*</span></label>
+                            <select id="goal" name="goal" required>
+                                <option value="" disabled selected>Select your primary goal</option>
+                                <option value="weight-loss">Weight Loss</option>
+                                <option value="weight-gain">Weight Gain</option>
+                                <option value="maintenance">Maintain Weight</option>
+                                <option value="muscle-gain">Muscle Building</option>
+                            </select>
+                        </div>
                     </div>
                     
                     <div class="form-group">
-                        <label for="gender">Gender *</label>
-                        <select id="gender" name="gender" required>
-                            <option value="">Select Gender</option>
-                            <option value="male">Male</option>
-                            <option value="female">Female</option>
-                            <option value="other">Other</option>
+                        <label for="allergies">Food Allergies/Intolerances</label>
+                        <textarea id="allergies" name="allergies" rows="3" placeholder="List any food allergies or intolerances you have (e.g., nuts, dairy, gluten)"></textarea>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label>Medical Conditions</label>
+                        <div class="checkbox-group">
+                            <label class="checkbox-option">
+                                <input type="checkbox" name="conditions" value="diabetes">
+                                <span class="checkbox-custom"></span>
+                                Diabetes
+                            </label>
+                            <label class="checkbox-option">
+                                <input type="checkbox" name="conditions" value="hypertension">
+                                <span class="checkbox-custom"></span>
+                                Hypertension
+                            </label>
+                            <label class="checkbox-option">
+                                <input type="checkbox" name="conditions" value="cholesterol">
+                                <span class="checkbox-custom"></span>
+                                High Cholesterol
+                            </label>
+                            <label class="checkbox-option">
+                                <input type="checkbox" name="conditions" value="thyroid">
+                                <span class="checkbox-custom"></span>
+                                Thyroid Issues
+                            </label>
+                            <label class="checkbox-option">
+                                <input type="checkbox" name="conditions" value="none">
+                                <span class="checkbox-custom"></span>
+                                None
+                            </label>
+                        </div>
+                    </div>
+                </section>
+                
+                <section class="form-section">
+                    <h2><i class="fas fa-utensils"></i> Select Your Diet Plan</h2>
+                    <p class="section-description">Choose a diet plan that fits your needs and budget.</p>
+                    
+                    <div class="plan-options">
+                        <div class="plan-card">
+                            <div class="plan-header">
+                                <h3>Basic Plan</h3>
+                                <div class="price">₹ 999<span>/month</span></div>
+                            </div>
+                            <ul class="plan-features">
+                                <li><i class="fas fa-check"></i> Weekly meal plan</li>
+                                <li><i class="fas fa-check"></i> Basic nutritional guidance</li>
+                                <li><i class="fas fa-check"></i> Email support</li>
+                                <li><i class="fas fa-times"></i> No personalized coaching</li>
+                            </ul>
+                            <label class="plan-select">
+                                <input type="radio" name="plan" value="basic" required>
+                                <span class="select-text">Select this plan</span>
+                            </label>
+                        </div>
+                        
+                        <div class="plan-card recommended">
+                            <div class="recommended-badge">Most Popular</div>
+                            <div class="plan-header">
+                                <h3>Premium Plan</h3>
+                                <div class="price">₹ 2,499<span>/month</span></div>
+                            </div>
+                            <ul class="plan-features">
+                                <li><i class="fas fa-check"></i> Customized weekly meal plan</li>
+                                <li><i class="fas fa-check"></i> Detailed nutritional analysis</li>
+                                <li><i class="fas fa-check"></i> WhatsApp & Email support</li>
+                                <li><i class="fas fa-check"></i> Weekly progress tracking</li>
+                            </ul>
+                            <label class="plan-select">
+                                <input type="radio" name="plan" value="premium" checked>
+                                <span class="select-text">Select this plan</span>
+                            </label>
+                        </div>
+                        
+                        <div class="plan-card">
+                            <div class="plan-header">
+                                <h3>Ultimate Plan</h3>
+                                <div class="price">₹ 4,999<span>/month</span></div>
+                            </div>
+                            <ul class="plan-features">
+                                <li><i class="fas fa-check"></i> Personalized daily meal plans</li>
+                                <li><i class="fas fa-check"></i> One-on-one dietitian consultation</li>
+                                <li><i class="fas fa-check"></i> 24/7 priority support</li>
+                                <li><i class="fas fa-check"></i> Recipe customization</li>
+                            </ul>
+                            <label class="plan-select">
+                                <input type="radio" name="plan" value="ultimate">
+                                <span class="select-text">Select this plan</span>
+                            </label>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Additional Information -->
+                <section class="form-section">
+                    <h2><i class="fas fa-clipboard-list"></i> Additional Information</h2>
+                    
+                    <div class="form-group">
+                        <label for="meals">How many meals per day do you prefer? <span class="required">*</span></label>
+                        <select id="meals" name="meals" required>
+                            <option value="" disabled selected>Select number of meals</option>
+                            <option value="3">3 meals</option>
+                            <option value="4">4 meals</option>
+                            <option value="5">5 meals</option>
+                            <option value="6">6 meals</option>
                         </select>
                     </div>
-                </div>
-                
-                <div class="form-group">
-                    <label for="email">Email Address *</label>
-                    <input type="email" id="email" name="email" required placeholder="your.email@example.com">
-                </div>
-            </div>
-            
-            <div class="form-section">
-                <h2><i class="fas fa-weight"></i> Health Details</h2>
-                <div class="form-row">
+                    
                     <div class="form-group">
-                        <label for="height">Height (cm) *</label>
-                        <input type="number" id="height" name="height" required min="50" max="250" placeholder="Height in cm">
+                        <label for="cuisine">Preferred Cuisine Type</label>
+                        <select id="cuisine" name="cuisine">
+                            <option value="" selected>No preference</option>
+                            <option value="indian">Indian</option>
+                            <option value="continental">Continental</option>
+                            <option value="mediterranean">Mediterranean</option>
+                            <option value="mixed">Mixed</option>
+                        </select>
                     </div>
                     
                     <div class="form-group">
-                        <label for="weight">Weight (kg) *</label>
-                        <input type="number" id="weight" name="weight" required min="20" max="300" placeholder="Weight in kg">
+                        <label for="budget">Monthly Food Budget (in Rupees)</label>
+                        <div class="range-container">
+                            <input type="range" id="budget" name="budget" min="3000" max="30000" step="1000" value="10000">
+                            <div class="range-value">
+                                <span id="budgetValue">₹ 10,000</span> per month
+                            </div>
+                        </div>
                     </div>
-                </div>
-                
-                <div class="form-group">
-                    <label for="activity">Activity Level *</label>
-                    <select id="activity" name="activity" required>
-                        <option value="">Select Activity Level</option>
-                        <option value="sedentary">Sedentary (Little or no exercise)</option>
-                        <option value="light">Lightly Active (Light exercise 1-3 days/week)</option>
-                        <option value="moderate">Moderately Active (Moderate exercise 3-5 days/week)</option>
-                        <option value="active">Very Active (Hard exercise 6-7 days/week)</option>
-                        <option value="extra">Extra Active (Very hard exercise & physical job)</option>
-                    </select>
-                </div>
-                
-                <div class="form-group">
-                    <label>Health Goals (Select all that apply)</label>
-                    <div class="checkbox-group">
-                        <label class="checkbox-label">
-                            <input type="checkbox" name="goals" value="weight-loss">
-                            <span>Weight Loss</span>
-                        </label>
-                        <label class="checkbox-label">
-                            <input type="checkbox" name="goals" value="muscle-gain">
-                            <span>Muscle Gain</span>
-                        </label>
-                        <label class="checkbox-label">
-                            <input type="checkbox" name="goals" value="maintenance">
-                            <span>Weight Maintenance</span>
-                        </label>
-                        <label class="checkbox-label">
-                            <input type="checkbox" name="goals" value="healthier">
-                            <span>Healthier Eating</span>
-                        </label>
-                        <label class="checkbox-label">
-                            <input type="checkbox" name="goals" value="specific-diet">
-                            <span>Specific Diet Plan</span>
-                        </label>
+                    
+                    <div class="form-group">
+                        <label for="notes">Additional Notes or Special Requests</label>
+                        <textarea id="notes" name="notes" rows="4" placeholder="Any other information you'd like to share about your dietary needs or preferences..."></textarea>
                     </div>
-                </div>
-            </div>
-            
-            <div class="form-section">
-                <h2><i class="fas fa-utensils"></i> Dietary Preferences</h2>
-                <div class="form-group">
-                    <label for="dietType">Diet Type *</label>
-                    <select id="dietType" name="dietType" required>
-                        <option value="">Select Diet Type</option>
-                        <option value="vegetarian">Vegetarian</option>
-                        <option value="vegan">Vegan</option>
-                        <option value="non-veg">Non-Vegetarian</option>
-                        <option value="pescatarian">Pescatarian</option>
-                        <option value="gluten-free">Gluten Free</option>
-                        <option value="keto">Keto</option>
-                        <option value="paleo">Paleo</option>
-                        <option value="no-restriction">No Restrictions</option>
-                    </select>
+                </section>
+
+                <!-- Form Submission -->
+                <div class="form-actions">
+                    <button type="submit" class="submit-btn">
+                        <i class="fas fa-paper-plane"></i> Submit Diet Form
+                    </button>
+                    <button type="reset" class="reset-btn">
+                        <i class="fas fa-redo"></i> Reset Form
+                    </button>
                 </div>
                 
-                <div class="form-group">
-                    <label>Food Allergies</label>
-                    <div class="checkbox-group">
-                        <label class="checkbox-label">
-                            <input type="checkbox" name="allergies" value="dairy">
-                            <span>Dairy</span>
-                        </label>
-                        <label class="checkbox-label">
-                            <input type="checkbox" name="allergies" value="nuts">
-                            <span>Nuts</span>
-                        </label>
-                        <label class="checkbox-label">
-                            <input type="checkbox" name="allergies" value="gluten">
-                            <span>Gluten</span>
-                        </label>
-                        <label class="checkbox-label">
-                            <input type="checkbox" name="allergies" value="seafood">
-                            <span>Seafood</span>
-                        </label>
-                        <label class="checkbox-label">
-                            <input type="checkbox" name="allergies" value="eggs">
-                            <span>Eggs</span>
-                        </label>
-                        <label class="checkbox-label">
-                            <input type="checkbox" name="allergies" value="soy">
-                            <span>Soy</span>
-                        </label>
-                        <label class="checkbox-label">
-                            <input type="checkbox" name="allergies" value="none">
-                            <span>None</span>
-                        </label>
-                    </div>
+                <div class="form-footer">
+                    <p><span class="required">*</span> Indicates required fields</p>
+                    <p>By submitting this form, you agree to our <a href="#">Terms & Conditions</a> and <a href="#">Privacy Policy</a>.</p>
                 </div>
-                
-                <div class="form-group">
-                    <label for="meals">Preferred Meals per Day *</label>
-                    <select id="meals" name="meals" required>
-                        <option value="">Select Number of Meals</option>
-                        <option value="3">3 Meals</option>
-                        <option value="4">4 Meals</option>
-                        <option value="5">5 Meals</option>
-                        <option value="6">6 Meals</option>
-                    </select>
-                </div>
-                
-                <div class="form-group">
-                    <label for="water">Daily Water Intake Goal (liters)</label>
-                    <input type="range" id="water" name="water" min="1" max="5" step="0.5" value="2">
-                    <div class="range-value">
-                        <span id="waterValue">2</span> liters per day
-                    </div>
-                </div>
-            </div>
-            
-            <div class="form-section">
-                <h2><i class="fas fa-calendar-alt"></i> Schedule & Budget</h2>
-                <div class="form-group">
-                    <label for="schedule">Preferred Eating Schedule</label>
-                    <textarea id="schedule" name="schedule" rows="2" placeholder="e.g., Breakfast: 8 AM, Lunch: 1 PM, Dinner: 7 PM..."></textarea>
-                </div>
-                
-                <div class="form-group">
-                    <label for="budget">Weekly Food Budget (₹)</label>
-                    <select id="budget" name="budget">
-                        <option value="">Select Budget Range</option>
-                        <option value="500">Under ₹500</option>
-                        <option value="1000">₹500 - ₹1,000</option>
-                        <option value="1500">₹1,000 - ₹1,500</option>
-                        <option value="2000">₹1,500 - ₹2,000</option>
-                        <option value="2500">₹2,000 - ₹2,500</option>
-                        <option value="3000">₹2,500 - ₹3,000</option>
-                        <option value="3500">₹3,000 - ₹3,500</option>
-                        <option value="4000">₹3,500 - ₹4,000</option>
-                        <option value="4500">₹4,000 - ₹4,500</option>
-                        <option value="5000">Over ₹5,000</option>
-                    </select>
-                </div>
-            </div>
-            
-            <div class="form-section">
-                <h2><i class="fas fa-heart"></i> Additional Information</h2>
-                <div class="form-group">
-                    <label for="medical">Medical Conditions / Medications</label>
-                    <textarea id="medical" name="medical" rows="2" placeholder="List any medical conditions or medications that might affect your diet..."></textarea>
-                </div>
-                
-                <div class="form-group">
-                    <label for="additional">Additional Notes</label>
-                    <textarea id="additional" name="additional" rows="2" placeholder="Any other information you'd like to share..."></textarea>
-                </div>
-                
-                <div class="form-group">
-                    <label class="checkbox-label">
-                        <input type="checkbox" required>
-                        <span>I agree to receive personalized diet recommendations and health tips via email.</span>
-                    </label>
-                </div>
-                
-                <div class="form-group">
-                    <label class="checkbox-label">
-                        <input type="checkbox" required>
-                        <span>I confirm that the information provided is accurate to the best of my knowledge. *</span>
-                    </label>
-                </div>
-            </div>
-            
-            <div class="form-actions">
-                <button type="submit" class="btn-submit">
-                    <i class="fas fa-paper-plane"></i> Submit Diet Form
-                </button>
-                <button type="reset" class="btn-reset">
-                    <i class="fas fa-redo"></i> Reset Form
-                </button>
-            </div>
-            
-            <div class="form-footer">
-                <p><i class="fas fa-info-circle"></i> Fields marked with * are required</p>
-                <p><i class="fas fa-shield-alt"></i> Your information is secure and confidential</p>
-            </div>
-        </form>
+            </form>
+        </main>
+
+        <footer>
+            <p>© 2023 NutriPlan Diet Form. All rights reserved.</p>
+            <p>This form is for educational purposes only. Consult a healthcare professional for medical advice.</p>
+        </footer>
     </div>
-    
-    <footer>
-        <p>© 2024 Healthy Diet Planner | Designed for Better Health</p>
-    </footer>
+
+    <script>
+        // Update budget value display
+        const budgetSlider = document.getElementById('budget');
+        const budgetValue = document.getElementById('budgetValue');
+        
+        budgetSlider.addEventListener('input', function() {
+            const value = new Intl.NumberFormat('en-IN').format(this.value);
+            budgetValue.textContent = `₹ ${value}`;
+        });
+        
+        // Form submission handler
+        document.getElementById('dietForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            alert('Thank you for submitting your diet form! Your personalized plan will be emailed to you shortly.');
+            // In a real application, you would send form data to a server here
+        });
+        
+        // Calculate BMI when height and weight are entered
+        const heightInput = document.getElementById('height');
+        const weightInput = document.getElementById('weight');
+        
+        function calculateBMI() {
+            if (heightInput.value && weightInput.value) {
+                const height = heightInput.value / 100; // convert cm to meters
+                const weight = weightInput.value;
+                const bmi = (weight / (height * height)).toFixed(1);
+                
+                // Show BMI in a subtle way (could be enhanced with a popup or tooltip)
+                console.log(`Your BMI is: ${bmi}`);
+            }
+        }
+        
+        heightInput.addEventListener('change', calculateBMI);
+        weightInput.addEventListener('change', calculateBMI);
+    </script>
 </body>
 </html>
